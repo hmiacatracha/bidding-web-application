@@ -1,0 +1,39 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+	t:type="Layout" t:title="title" showTitleInBody="true">
+
+<p class="text-center">${message:welcome}</p>
+
+<form t:type="Form" class="form-horizontal" t:id="createBidForm"
+	role="form">
+	<t:errors />
+
+	<div class="panel panel-info">
+		<div class="col-md-offset-5 col-md-0">
+			${message:minimunBid-label}
+			<t:output t:value="minimunBid" format="NumberFormat" />
+		</div>
+		<div class="col-md-offset-5 col-md-0">
+			${message:productName-label} ${productName}</div>
+	</div>
+
+
+	<div class="form-group">
+		<t:label for="amount" class="col-md-offset-3 col-md-2" />
+		<div class="col-md-3">
+
+			<input t:id="amount" t:type="TextField" t:validate="required"
+				maxlength="30" />
+
+
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-md-offset-5 col-md-1">
+			<button id="bidBtn" type="submit" class="btn btn-primary">${message:submit}</button>
+		</div>
+	</div>
+
+</form>
+
+</html>

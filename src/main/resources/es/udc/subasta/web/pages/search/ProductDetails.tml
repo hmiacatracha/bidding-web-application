@@ -1,0 +1,80 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+	t:type="Layout" t:title="title" showTitleInBody="true"
+	xmlns:p="tapestry:parameter">
+
+<t:if test="product">
+
+	<t:if test="isExpired">
+		<t:if test="bidBoolean">
+			<div class="container">
+				<div class="alert alert-success text-center" role="alert">
+					<p>${message:bidCreated-label}</p>
+				</div>
+			</div>
+		</t:if>
+		<table class="table table-striped table-hover">
+			<tbody>
+				<tr>
+					<th>${message:productName-label}</th>
+					<td>${product.name}</td>
+				</tr>
+				<tr>
+					<th>${message:categoryName-label}</th>
+					<td>${product.category.name}</td>
+				</tr>
+				<tr>
+					<th>${message:description-label}</th>
+					<td>${product.description}</td>
+				</tr>
+				<tr>
+					<th>${message:owner-label}</th>
+					<td>${product.owner.loginName}</td>
+				</tr>
+				<tr>
+					<th>${message:startingDate-label}</th>
+					<td><t:output value="startDate" format="dateFormat" /></td>
+				</tr>
+				<tr>
+					<th>${message:remainingTime-label}</th>
+					<td>${remainingTime}</td>
+				</tr>
+				<tr>
+					<th>${message:startingPrice-label}</th>
+					<td><t:output value="product.startingprice"
+							format="numberFormat" /></td>
+				</tr>
+				<tr>
+					<th>${message:currentPrice-label}</th>
+					<td><t:output value="product.currentprice"
+							format="numberFormat" /></td>
+				</tr>
+				<tr>
+					<th>${message:deliveryInformation-label}</th>
+					<td>${product.deliveryInformation}</td>
+				</tr>
+				<tr>
+					<th>${message:currentWinner-label}</th>
+					<td>${currentWinner}</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<form t:type="Form" class="form-horizontal" t:id="submitCreateBidForm">
+
+			<div class="form-group">
+				<div class="col-md-offset-5 col-md-1">
+					<button id="bidBtn" type="submit" class="btn btn-primary">${message:submit}</button>
+				</div>
+			</div>
+		</form>
+
+		<p:else>
+			<h4 class="alert alert-danger text-center">${message:productExpired}</h4>
+		</p:else>
+	</t:if>
+	<p:else>
+		<h4 class="alert alert-danger text-center">${message:productNotFound}</h4>
+	</p:else>
+
+</t:if>
+</html>
